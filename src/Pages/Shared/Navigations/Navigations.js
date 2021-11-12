@@ -2,7 +2,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { Container, Form, FormControl, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import useAuth from '../../Hooks/useAuth';
+import useAuth from '../../../Hooks/useAuth';
 
 const Navigations = () => {
     const { user, logout } = useAuth()

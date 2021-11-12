@@ -3,8 +3,8 @@ import React from 'react';
 import { Redirect, Route } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
 
-const PrivateRoute = ({ children, ...rest }) => {
-    const { isLoading, user } = useAuth()
+const AdminRoute = ({ children, ...rest }) => {
+    const { isLoading, user, admin } = useAuth()
     if (isLoading) {
         return <CircularProgress color="secondary" />
 
@@ -13,7 +13,7 @@ const PrivateRoute = ({ children, ...rest }) => {
         <Route
             {...rest}
             render={({ location }) =>
-                user.email ? (
+                user.email && admin ? (
                     children
                 ) : (
                     <Redirect
@@ -28,4 +28,4 @@ const PrivateRoute = ({ children, ...rest }) => {
     );
 };
 
-export default PrivateRoute;
+export default AdminRoute;

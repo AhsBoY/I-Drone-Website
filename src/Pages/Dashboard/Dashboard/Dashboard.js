@@ -15,7 +15,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Button from '@mui/material/Button';
-import { Route, useHistory, useLocation, useRouteMatch } from 'react-router';
+import { Route, useHistory, useRouteMatch } from 'react-router';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import { Link, NavLink, Switch } from 'react-router-dom';
 import MyOrders from '../MyOrders/MyOrders';
@@ -25,7 +25,14 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import useAuth from '../../Hooks/useAuth';
+import useAuth from '../../../Hooks/useAuth';
+import ManageOrders from '../AdminPanel/ManageOrders/ManageOrders';
+import MakeAdmin from '../AdminPanel/MakeAdmin/MakeAdmin';
+import AddProducts from '../AdminPanel/AddProducts/AddProducts';
+import ManageProducts from '../AdminPanel/ManageProducts/ManageProducts';
+import MakePayment from '../MakePayment/MakePayment';
+import Review from '../Review/Review';
+import AdminRoute from '../../Shared/AdminRoute/AdminRoute';
 
 const drawerWidth = 260;
 
@@ -97,9 +104,14 @@ const Dashboard = () => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
-    const history = useHistory()
-    const { logout } = useAuth()
 
+
+    const history = useHistory()
+    const { logout, admin } = useAuth()
+
+
+
+    console.log(admin)
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -141,42 +153,63 @@ const Dashboard = () => {
                 <Divider />
 
                 <List>
-                    {['DashboardHome', 'My Orders', 'Make Payment', 'Review', "Go Back", "Log Out"].map((text, index) => (
+                    {['DashboardHome', 'My Orders', 'Make Payment', 'Review', "Manage Products", "Go Back", "Log Out"].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
                                 {index === 0 && <NavLink to={`${url}`}> <DashboardIcon /></NavLink>}
-                                {index === 1 && <NavLink to={`${url}/myorders`}> <BorderColorIcon /></NavLink>}
-                                {index === 2 && <NavLink to={`${url}/makepayment`}> <PaymentIcon /></NavLink>}
-                                {index === 3 && <NavLink to={`${url}/review`}><RateReviewIcon /></NavLink>}
-                                {index === 4 && <IconButton onClick={() => { history.replace("/") }} color="secondary" sx={{ paddingLeft: "0" }}><ArrowBackIcon /></IconButton>}
-                                {index === 5 && <IconButton onClick={logout} sx={{ paddingLeft: "4px" }} variant="text"><LogoutIcon /></IconButton>}
+                                {index === 1 && <NavLink to={admin === true ? `${url}/manageorders` : `${url}/myorders`}> <BorderColorIcon /></NavLink>}
+                                {index === 2 && <NavLink to={admin === true ? `${url}/makeadmin` : `${url}/makepayment`}> <PaymentIcon /></NavLink>}
+                                {index === 3 && <NavLink to={admin === true ? `${url}/addproducts` : `${url}/review`}><RateReviewIcon /></NavLink>}
+                                {index === 4 && admin === true && <NavLink to={`${url}/manageproducts`}><RateReviewIcon /></NavLink>}
+                                {index === 5 && <IconButton onClick={() => { history.replace("/") }} color="secondary" sx={{ paddingLeft: "0" }}><ArrowBackIcon /></IconButton>}
+                                {index === 6 && <IconButton onClick={logout} sx={{ paddingLeft: "4px" }} variant="text"><LogoutIcon /></IconButton>}
                             </ListItemIcon>
                             {index === 0 && <Link style={{ textDecoration: "none", color: "black" }} to={`${url}`}><Button color="inherit">{text}</Button></Link>}
-                            {index === 1 && <Link style={{ textDecoration: "none", color: "black" }} to={`${url}/myorders`}><Button color="inherit">{text}</Button></Link>}
-                            {index === 2 && <Link style={{ textDecoration: "none", color: "black" }} to={`${url}`}><Button color="inherit">{text}</Button></Link>}
-                            {index === 3 && <Link style={{ textDecoration: "none", color: "black" }} to={`${url}`}><Button color="inherit">{text}</Button></Link>}
-                            {index === 4 && <Link style={{ textDecoration: "none", color: "black" }} to={`${url}`}><Button color="inherit">{text}</Button></Link>}
-                            {index === 5 && <Link style={{ textDecoration: "none", color: "black" }} to={`${url}`}><Button color="inherit">{text}</Button></Link>}
+                            {index === 1 && <Link style={{ textDecoration: "none", color: "black" }} to={admin === true ? `${url}/manageorders` : `${url}/myorders`}><Button color="inherit">{admin === true ? "Manage All Orders" : `${text}`}</Button></Link>}
+                            {index === 2 && <Link style={{ textDecoration: "none", color: "black" }} to={admin === true ? `${url}/makeadmin` : `${url}/makepayment`}><Button color="inherit">{admin === true ? "Make An Admin" : `${text}`}</Button></Link>}
+                            {index === 3 && <Link style={{ textDecoration: "none", color: "black" }} to={admin === true ? `${url}/addproducts` : `${url}/review`}><Button color="inherit">{admin === true ? "Add A Product" : `${text}`}</Button></Link>}
+                            {index === 4 && <Box>
+                                {
+                                    admin === true && <Link style={{ textDecoration: "none", color: "black" }} to={`${url}/manageproducts`}><Button color="inherit">{text}</Button></Link>
+                                }
+                            </Box>}
+                            {index === 5 && <Button onClick={() => { history.replace("/") }} color="inherit">{text}</Button>}
+                            {index === 6 && <Button onClick={logout} color="inherit">{text}</Button>}
                         </ListItem>
                     ))}
 
 
                 </List>
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" sx={{ flexGrow: 1, width: "90%" }}>
                 <DrawerHeader />
-                <Typography paragraph>
-                    <Switch>
-                        <Route exact path={path}>
-                            <h2>Yp</h2>
-                            <DashboardHome />
-                        </Route>
-                        <Route path={`${path}/myorders`}>
-                            <p>xcvjk</p>
-                            <MyOrders />
-                        </Route>
-                    </Switch>
-                </Typography>
+                <Switch>
+                    <Route exact path={path}>
+                        <DashboardHome />
+                    </Route>
+                    <Route path={`${path}/myorders`}>
+                        <MyOrders />
+                    </Route>
+                    <Route path={`${path}/makepayment`}>
+                        <MakePayment />
+                    </Route>
+                    <Route path={`${path}/review`}>
+                        <Review />
+                    </Route>
+                    <AdminRoute path={`${path}/makeadmin`}>
+                        <MakeAdmin />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageorders`}>
+                        <ManageOrders />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addproducts`}>
+                        <AddProducts />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageproducts`}>
+                        <ManageProducts />
+                    </AdminRoute>
+                </Switch>
+
             </Box>
         </Box>
     );

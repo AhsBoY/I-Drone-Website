@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const DroneInfo = ({ droneInfo }) => {
     // console.log(droneInfo)
-    const { img, price, name, describe } = droneInfo
+    const { img, price, name, describe, _id } = droneInfo
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
@@ -23,7 +23,7 @@ const DroneInfo = ({ droneInfo }) => {
             </CardContent>
             <CardActions className="m-3 d-flex justify-content-between">
                 <Typography variant="h5"> ${price} </Typography>
-                <NavLink to="/buy"><Button variant="contained" size="small">Buy Now</Button></NavLink>
+                <NavLink to={`/buy/${_id}`}><Button variant="contained" size="small">Buy Now</Button></NavLink>
             </CardActions>
         </Card>
     );

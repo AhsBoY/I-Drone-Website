@@ -14,7 +14,7 @@ const Drones = () => {
     }, [])
     console.log(dronesInfo)
     return (
-        <Container>
+        <Container sx={{ mb: 10 }}>
             <h2>Our Drones</h2>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="mt-5">
                 {dronesInfo.slice(1, 7).map((droneInfo) => (

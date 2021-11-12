@@ -7,12 +7,12 @@ import {
 } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
 import Explore from './Pages/Explore/Explore';
-import AuthProvider from './Pages/Context/AuthProvider';
 import Login from './Pages/Authentication/Login/Login/Login';
 import Register from './Pages/Authentication/Register/Register';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Shared/PrivateRoute/PrivateRoute';
 import Purchase from './Pages/Purchase/Purchase';
+import AuthProvider from './Context/AuthProvider';
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
             <PrivateRoute path="/dasboard">
               <Dashboard />
             </PrivateRoute>
-            <PrivateRoute path="/buy">
+            <PrivateRoute path="/buy/:id">
               <Purchase />
             </PrivateRoute>
           </Switch>

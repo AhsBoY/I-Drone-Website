@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import Modal from '@mui/material/Modal';
+import "./Placeorder.css"
 
 const style = {
     position: 'absolute',
@@ -47,11 +48,11 @@ const PlaceOrder = ({ id, droneInfo }) => {
         e.preventDefault()
     }
     return (
-        <Container sx={{ marginTop: "50px" }}>
+        <Container sx={{ marginTop: "50px", marginBottom: "20px" }}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item md={8} sm={12}>
                     <Box container>
-                        <img style={{ width: "600px" }} src={img} alt="" srcset="" />
+                        <img className="imagee" src={img} alt="" srcset="" />
                         <Typography variant="h3">
                             {name}
                         </Typography>

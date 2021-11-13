@@ -5,6 +5,7 @@ import Navigations from '../../Shared/Navigations/Navigations';
 import Banner from '../Banner/Banner';
 import Drones from '../Drones/Drones';
 import Reviews from '../Review/Reviews';
+import Utilities from '../Utilities/Utilities';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner />
             <Drones />
             <Reviews />
+            <Utilities />
             <Footer />
         </Box>
     );

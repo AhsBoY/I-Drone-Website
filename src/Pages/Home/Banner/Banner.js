@@ -26,7 +26,7 @@ const Banner = () => {
                     />
                     <Carousel.Caption>
                         <h3 style={{ color: "orange" }} className="fst-italic">I Drone</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <p>I Drone Is A World latest Drone Website.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -37,8 +37,8 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3 style={{ color: "orange" }} className="fst-italic">I Drone</h3>
+                        <p style={{ color: "black" }}>We Have Around 20 Drone Collections.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

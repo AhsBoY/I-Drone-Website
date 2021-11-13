@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import { Grid } from '@mui/material';
 import DroneInfo from '../Shared/DroneInfo/DroneInfo';
 import Navigations from '../Shared/Navigations/Navigations';
+import Footer from '../Shared/Footer/Footer';
 
 
 const Explore = () => {
@@ -17,8 +18,8 @@ const Explore = () => {
     return (
         <>
             <Navigations />
-            <Container>
-                <h2>Our Drones</h2>
+            <Container sx={{ my: 5 }}>
+                <h2>Our <span style={{ color: "orange" }}>Collections</span></h2>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="mt-5">
                     {dronesInfo.slice(1,).map((droneInfo) => (
                         <Grid item xs={4} sm={4} md={4} key={droneInfo._id}>
@@ -27,6 +28,7 @@ const Explore = () => {
                     ))}
                 </Grid>
             </Container>
+            <Footer />
         </>
     );
 };

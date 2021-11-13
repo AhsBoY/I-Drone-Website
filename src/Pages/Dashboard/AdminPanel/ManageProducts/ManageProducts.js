@@ -13,6 +13,7 @@ import { Grid, IconButton, Container, CircularProgress, Typography } from '@mui/
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box } from '@mui/system';
 import useAuth from '../../../../Hooks/useAuth';
+import Footer from '../../../Shared/Footer/Footer';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -63,42 +64,45 @@ const ManageProducts = () => {
             .then(data => setDronesInfo(data.data))
     }, [dronesInfo])
     return (
-        <Container sx={{ my: "50px" }}>
-            <Grid container spacing={2}>
-                <Grid item xs={12} md={12}>
-                    <Box>
-                        <Typography sx={{ mb: 2 }} variant="h3">
-                            Your Site Has {dronesInfo.length - 1} Products
-                        </Typography>
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                                <TableHead>
-                                    <TableRow>
-                                        <StyledTableCell align="center">Name</StyledTableCell>
-                                        <StyledTableCell align="center">Price</StyledTableCell>
-                                        <StyledTableCell align="center">Image</StyledTableCell>
-                                        <StyledTableCell align="center">Admin Panel</StyledTableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {dronesInfo.length && dronesInfo.slice(1,).map((info) => (
-                                        <StyledTableRow key={info._id}>
-                                            <StyledTableCell align="center">{info.name}</StyledTableCell>
-                                            <StyledTableCell align="center">{info.price}</StyledTableCell>
-                                            <StyledTableCell align="center">{info.img}</StyledTableCell>
-                                            <StyledTableCell align="center"><IconButton onClick={() => handleDelete(info._id)} aria-label="delete">
-                                                <DeleteIcon />
-                                            </IconButton>
-                                            </StyledTableCell>
-                                        </StyledTableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                    </Box>
+        <>
+            <Container sx={{ my: "50px" }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={12}>
+                        <Box>
+                            <Typography sx={{ mb: 2 }} variant="h3">
+                                Your Site Has {dronesInfo.length - 1} Products
+                            </Typography>
+                            <TableContainer component={Paper}>
+                                <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <StyledTableCell align="center">Name</StyledTableCell>
+                                            <StyledTableCell align="center">Price</StyledTableCell>
+                                            <StyledTableCell align="center">Image</StyledTableCell>
+                                            <StyledTableCell align="center">Admin Panel</StyledTableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {dronesInfo.length && dronesInfo.slice(1,).map((info) => (
+                                            <StyledTableRow key={info._id}>
+                                                <StyledTableCell align="center">{info.name}</StyledTableCell>
+                                                <StyledTableCell align="center">{info.price}</StyledTableCell>
+                                                <StyledTableCell align="center">{info.img}</StyledTableCell>
+                                                <StyledTableCell align="center"><IconButton onClick={() => handleDelete(info._id)} aria-label="delete">
+                                                    <DeleteIcon />
+                                                </IconButton>
+                                                </StyledTableCell>
+                                            </StyledTableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </Box>
+                    </Grid >
                 </Grid >
-            </Grid >
-        </Container >
+            </Container >
+            <Footer />
+        </>
     );
 };
 

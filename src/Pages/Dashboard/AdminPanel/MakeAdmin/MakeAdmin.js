@@ -1,6 +1,7 @@
 import { TextField, Button, Typography, Container } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
+import Footer from '../../../Shared/Footer/Footer';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState("")
@@ -23,18 +24,21 @@ const MakeAdmin = () => {
         e.preventDefault()
     }
     return (
-        <Container sx={{ my: 6 }}>
-            <Typography variant="h4">
-                Make Admin For Managing Your Site
-            </Typography>
-            {/* {success && <Alert severity="success">Yo Is Our New Admin</Alert>} */}
-            <form onSubmit={handleAdminSubmit}>
-                <TextField sx={{ width: "25%" }} id="standard-basic" type="email" onBlur={handleOnBlur} label="Your Email" variant="standard" ></TextField>
-                <br />
-                <br />
-                <Button type="submit" variant="contained">Make Admin</Button>
-            </form>
-        </Container>
+        <>
+            <Container sx={{ mt: 6, mb: 30 }}>
+                <Typography variant="h4">
+                    Make Admin For Managing Your Site
+                </Typography>
+                {/* {success && <Alert severity="success">Yo Is Our New Admin</Alert>} */}
+                <form onSubmit={handleAdminSubmit}>
+                    <TextField sx={{ width: "25%" }} id="standard-basic" type="email" onBlur={handleOnBlur} label="Your Email" variant="standard" ></TextField>
+                    <br />
+                    <br />
+                    <Button type="submit" variant="contained">Make Admin</Button>
+                </form>
+            </Container>
+            <Footer />
+        </>
     );
 };
 

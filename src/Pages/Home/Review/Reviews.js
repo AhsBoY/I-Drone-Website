@@ -1,5 +1,5 @@
 import { Container, Grid, Paper, Rating, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, textAlign } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import useAuth from '../../../Hooks/useAuth';
@@ -33,6 +33,11 @@ const Reviews = () => {
 
     return (
         <Container sx={{ mt: 5 }}>
+            <Box>
+                <Typography variant="h4" sx={{ color: " orange" }}>
+                    Reviews
+                </Typography>
+            </Box>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 {
                     reviewInfo.length && reviewInfo.map(info =>

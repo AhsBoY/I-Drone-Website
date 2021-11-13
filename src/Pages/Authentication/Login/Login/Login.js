@@ -49,8 +49,6 @@ const Login = () => {
                     <Button sx={{ width: "30%" }} variant="text">New User? Please Register</Button>
                 </NavLink>
             </form>
-            <p>----------------------------------------------</p>
-            <Button sx={{ width: "30%" }} variant="outlined">Google Sign In</Button>
             <br />
             {isLoading && <CircularProgress />}
             <br />

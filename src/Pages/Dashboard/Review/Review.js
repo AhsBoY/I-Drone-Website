@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
+import Footer from '../../Shared/Footer/Footer';
 
 const Review = () => {
     const { user } = useAuth()
@@ -34,54 +35,57 @@ const Review = () => {
     }
 
     return (
-        <Container sx={{ mt: 10 }}>
-            <Typography variant="h4" component="div">
-                Please Give Your Valueable Review !!!
-            </Typography>
-            <Box sx={{ my: 5 }}>
-                <form onSubmit={handleSubmitReviewInfo}>
-                    <TextField
-                        sx={{ width: "30%", m: 1 }}
-                        id="outlined-size-small"
-                        label="Name"
-                        defaultValue={user.displayName}
-                        size="small"
-                        disabled
-                    />
-                    <br />
-                    <TextField
-                        sx={{ width: "30%", m: 1 }}
-                        id="outlined-textarea"
-                        label="Give Your Description"
-                        name="describe"
-                        onBlur={handleReviewInfo}
-                        placeholder="Placeholder"
-                        type="text"
-                        multiline
-                        required
-                    />
-                    <br />
-                    <TextField
-                        sx={{ width: "30%", m: 1 }}
-                        type="number"
-                        id="outlined-size-small"
-                        name="ratings"
-                        label="Give Your Ratings"
-                        onBlur={handleReviewInfo}
-                        size="small"
-                        InputProps={{
-                            inputProps: {
-                                max: 5, min: 0
-                            }
-                        }}
-                        required
-                    />
-                    <Box sx={{ display: 'flex', justifyContent: "center", }}>
-                        <Button sx={{ width: "30%" }} variant="contained" type="submit">Submit</Button>
-                    </Box>
-                </form>
-            </Box>
-        </Container>
+        <>
+            <Container sx={{ mt: 10, mb: 20 }}>
+                <Typography variant="h4" component="div">
+                    Please Give Your Valueable Review !!!
+                </Typography>
+                <Box sx={{ my: 5 }}>
+                    <form onSubmit={handleSubmitReviewInfo}>
+                        <TextField
+                            sx={{ width: "30%", m: 1 }}
+                            id="outlined-size-small"
+                            label="Name"
+                            defaultValue={user.displayName}
+                            size="small"
+                            disabled
+                        />
+                        <br />
+                        <TextField
+                            sx={{ width: "30%", m: 1 }}
+                            id="outlined-textarea"
+                            label="Give Your Feedback"
+                            name="describe"
+                            onBlur={handleReviewInfo}
+                            placeholder="Placeholder"
+                            type="text"
+                            multiline
+                            required
+                        />
+                        <br />
+                        <TextField
+                            sx={{ width: "30%", m: 1 }}
+                            type="number"
+                            id="outlined-size-small"
+                            name="ratings"
+                            label="Give Your Ratings"
+                            onBlur={handleReviewInfo}
+                            size="small"
+                            InputProps={{
+                                inputProps: {
+                                    max: 5, min: 0
+                                }
+                            }}
+                            required
+                        />
+                        <Box sx={{ display: 'flex', justifyContent: "center", }}>
+                            <Button sx={{ width: "30%" }} variant="contained" type="submit">Submit</Button>
+                        </Box>
+                    </form>
+                </Box>
+            </Container>
+            <Footer />
+        </>
     );
 };
 

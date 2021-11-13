@@ -33,6 +33,7 @@ import ManageProducts from '../AdminPanel/ManageProducts/ManageProducts';
 import MakePayment from '../MakePayment/MakePayment';
 import Review from '../Review/Review';
 import AdminRoute from '../../Shared/AdminRoute/AdminRoute';
+import Footer from '../../Shared/Footer/Footer';
 
 const drawerWidth = 260;
 
@@ -187,7 +188,7 @@ const Dashboard = () => {
                     <Route exact path={path}>
                         <DashboardHome />
                     </Route>
-                    <Route path={`${path}/myorders`}>
+                    <Route exact path={`${path}/myorders`}>
                         <MyOrders />
                     </Route>
                     <Route path={`${path}/makepayment`}>
@@ -209,7 +210,6 @@ const Dashboard = () => {
                         <ManageProducts />
                     </AdminRoute>
                 </Switch>
-
             </Box>
         </Box>
     );

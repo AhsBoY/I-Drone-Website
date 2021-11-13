@@ -16,11 +16,13 @@ const Purchase = () => {
     }, [])
 
     return (
-        <Container>
-            <Navigations />
-            <PlaceOrder key={droneInfo._id} droneInfo={droneInfo} id={id} />
+        <>
+            <Container>
+                <Navigations />
+                <PlaceOrder key={droneInfo._id} droneInfo={droneInfo} id={id} />
+            </Container>
             <Footer />
-        </Container>
+        </>
     );
 };
 

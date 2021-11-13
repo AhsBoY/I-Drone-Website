@@ -1,0 +1,19 @@
+.style {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+@media only screen and (max-width:600px) {
+    .style{
+        display: inline;
+    }
+    .image {
+        margin-top: 20px;
+        width: 370px;
+        height: 200px;
+        margin-left: 0;
+    }
+  }

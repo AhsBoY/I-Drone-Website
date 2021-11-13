@@ -8,7 +8,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import PendingIcon from '@mui/icons-material/Pending';
 import { Grid, IconButton, Container, CircularProgress, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box } from '@mui/system';
@@ -43,7 +42,7 @@ const ManageProducts = () => {
         const confrimation = window.confirm("You Sure , User Will Be Very Mad At You?")
         if (confrimation) {
 
-            axios.delete(`http://localhost:5000/drone/${id}`)
+            axios.delete(`https://tranquil-castle-61630.herokuapp.com/drone/${id}`)
                 .then(res => {
                     console.log(res.data)
                     if (res.data.deletedCount > 0) {
@@ -60,7 +59,7 @@ const ManageProducts = () => {
         }
     }
     useEffect(() => {
-        axios.get("http://localhost:5000/drone")
+        axios.get("https://tranquil-castle-61630.herokuapp.com/drone")
             .then(data => setDronesInfo(data.data))
     }, [dronesInfo])
     return (

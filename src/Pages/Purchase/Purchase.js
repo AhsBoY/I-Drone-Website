@@ -11,7 +11,7 @@ const Purchase = () => {
     const [droneInfo, setDroneInfo] = useState([])
     const { id } = useParams()
     useEffect(() => {
-        axios.get(`http://localhost:5000/drone/${id}`)
+        axios.get(`https://tranquil-castle-61630.herokuapp.com/drone/${id}`)
             .then(data => setDroneInfo(data.data))
     }, [])
 

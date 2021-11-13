@@ -12,7 +12,7 @@ const MakeAdmin = () => {
         const confirm = window.confirm(`You Are Making ${email} A Admin`)
         if (confirm) {
             const user = { email }
-            axios.put("http://localhost:5000/users/admin", user)
+            axios.put("https://tranquil-castle-61630.herokuapp.com/users/admin", user)
                 .then(res => {
                     // console.log(res.data)
                     if (res.data.modifiedCount) {

@@ -7,7 +7,7 @@ import "./Utilities.css"
 const Utilities = () => {
     const [image, setImage] = useState({})
     useEffect(() => {
-        axios.get("http://localhost:5000/drone")
+        axios.get("https://tranquil-castle-61630.herokuapp.com/drone")
             .then(res => setImage(res.data[0]))
     }, [])
     return (

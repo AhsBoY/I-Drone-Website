@@ -19,7 +19,7 @@ const Login = () => {
         setUserInfo(newLoginData)
     }
     const handleLoginSubmit = e => {
-        console.log(userInfo)
+        // console.log(userInfo)
         loginUser(userInfo.Email, userInfo.Password, location, history)
         e.preventDefault()
     }

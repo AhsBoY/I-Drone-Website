@@ -22,7 +22,7 @@ const Review = () => {
     const handleSubmitReviewInfo = e => {
         e.preventDefault()
         console.log(reviewInfo)
-        axios.post("http://localhost:5000/review", reviewInfo)
+        axios.post("https://tranquil-castle-61630.herokuapp.com/review", reviewInfo)
             .then(res => {
                 // console.log(res.data)
                 if (res.data.insertedId) {

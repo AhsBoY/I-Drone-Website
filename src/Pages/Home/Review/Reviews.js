@@ -27,7 +27,7 @@ const Reviews = () => {
     const [reviewInfo, setReviewInfo] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:5000/review")
+        axios.get("https://tranquil-castle-61630.herokuapp.com/review")
             .then(res => setReviewInfo(res.data))
     }, [])
 

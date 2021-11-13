@@ -17,8 +17,8 @@ const AddProducts = () => {
     }
 
     const handleSubmit = e => {
-        console.log(productsInfo)
-        axios.post("http://localhost:5000/drone", productsInfo)
+        // console.log(productsInfo)
+        axios.post("https://tranquil-castle-61630.herokuapp.com/drone", productsInfo)
             .then(res => {
                 if (res.data.insertedId) {
                     alert("Added SuccessFully")

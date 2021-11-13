@@ -11,14 +11,14 @@ const MyOrders = () => {
     const { user } = useAuth()
     const [ordersInfo, setOrdersInfo] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/orders/${user.email}`)
+        axios.get(`https://tranquil-castle-61630.herokuapp.com/orders/${user.email}`)
             .then(data => setOrdersInfo(data.data))
     }, [ordersInfo])
 
     const handleCancelNow = id => {
         const confirmation = window.confirm("Are You Sure??")
         if (confirmation) {
-            axios.delete(`http://localhost:5000/order/${id}`)
+            axios.delete(`https://tranquil-castle-61630.herokuapp.com/order/${id}`)
                 .then(data => {
                     if (data.data.deletedCount > 0) {
                         alert("Now Admin Will Cry")

@@ -38,7 +38,7 @@ const PlaceOrder = ({ id, droneInfo }) => {
     }
     const handleSubmit = e => {
         // console.log(orderInfo)
-        axios.post("http://localhost:5000/orders", orderInfo)
+        axios.post("https://tranquil-castle-61630.herokuapp.com/orders", orderInfo)
             .then(data => {
                 // console.log(data.data)
                 if (data.data.insertedId) {

@@ -11,7 +11,7 @@ const Explore = () => {
     const [dronesInfo, setDronesInfo] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:5000/drone")
+        axios.get("https://tranquil-castle-61630.herokuapp.com/drone")
             .then(data => setDronesInfo(data.data))
     }, [])
 

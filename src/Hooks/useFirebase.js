@@ -45,7 +45,7 @@ const useFirebase = () => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                console.log(result.user)
+                // console.log(result.user)
                 const destination = location?.state?.from || '/';
                 history.replace(destination);
                 setAuthError('');
@@ -80,7 +80,7 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/users/${user.email}`)
+        axios.get(`https://tranquil-castle-61630.herokuapp.com/users/${user.email}`)
             .then(res => {
                 console.log(res.data.admin)
                 setAdmin(res.data.admin)
@@ -90,7 +90,7 @@ const useFirebase = () => {
 
     const storeUser = (email, displayName) => {
         const user = { email, displayName }
-        axios.post("http://localhost:5000/users", user)
+        axios.post("https://tranquil-castle-61630.herokuapp.com/users", user)
             .then(data => console.log(data.data))
     }
 

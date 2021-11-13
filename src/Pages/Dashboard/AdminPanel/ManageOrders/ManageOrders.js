@@ -42,7 +42,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const ManageOrders = () => {
     const [ordersInfo, setOrdersInfo] = useState([])
     useEffect(() => {
-        axios.get("http://localhost:5000/orders")
+        axios.get("https://tranquil-castle-61630.herokuapp.com/orders")
             .then(res => setOrdersInfo(res.data))
     }, [ordersInfo])
 
@@ -53,7 +53,7 @@ const ManageOrders = () => {
         const confrimation = window.confirm("You Sure , User Will Be Very Mad At You?")
         if (confrimation) {
 
-            axios.delete(`http://localhost:5000/orders/${id}`)
+            axios.delete(`https://tranquil-castle-61630.herokuapp.com/orders/${id}`)
                 .then(res => {
                     console.log(res.data)
                     if (res.data.deletedCount > 0) {
@@ -72,7 +72,7 @@ const ManageOrders = () => {
     const handleUpdate = id => {
         const orderInfo = ordersInfo.filter(info => info._id === id)
         orderInfo[0].status = "Shipped"
-        axios.put(`http://localhost:5000/orders/${id}`, orderInfo)
+        axios.put(`https://tranquil-castle-61630.herokuapp.com/orders/${id}`, orderInfo)
             .then(res => {
                 console.log(res.data)
                 if (res.data.modifiedCount) {

@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Banner = () => {
     const [banner, setBanner] = useState({})
     useEffect(() => {
-        axios.get("http://localhost:5000/drone")
+        axios.get("https://tranquil-castle-61630.herokuapp.com/drone")
             .then(data => {
                 setBanner(data.data[0])
             })

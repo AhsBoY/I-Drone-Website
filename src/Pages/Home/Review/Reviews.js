@@ -20,10 +20,6 @@ const labels = {
 };
 
 const Reviews = () => {
-    const { user } = useAuth()
-    const [value, setValue] = React.useState(2);
-    const [hover, setHover] = React.useState(-1);
-
     const [reviewInfo, setReviewInfo] = useState([])
 
     useEffect(() => {
